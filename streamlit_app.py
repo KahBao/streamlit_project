@@ -81,8 +81,6 @@ with tab1:
         
         st.markdown("---")
         st.success(f"### Predicted Price: €{prediction_real[0]:,.2f}")
-        st.write("This estimate is based on the features selected and trained Random Forest / Gradient Boosting logic.")
-
 
 # TAB 2: ANALYSIS 
 with tab2:
