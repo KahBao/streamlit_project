@@ -3,28 +3,21 @@ import pandas as pd
 import numpy as np
 import joblib
 
-# ==========================================
-# 1. LOAD MODEL
-# ==========================================
+# LOAD MODEL
 try:
-    # Double check your pkl filename matches exactly
     model = joblib.load("laptop_best_rf_gb_model.pkl")
 except Exception as e:
     st.error(f"Error loading model: {e}")
 
-# ==========================================
-# 2. PAGE SETUP
-# ==========================================
+# PAGE SETUP
 st.set_page_config(page_title="Laptop Price Predictor", layout="centered", page_icon="💻")
 
 st.title("💻 Laptop Price Prediction")
 
 # Create Tabs
-tab1, tab2 = st.tabs(["🚀 Price Predictor", "📊 Model Insights"])
+tab1, tab2 = st.tabs(["Price Predictor", "Model Insights"])
 
-# ==========================================
 # TAB 1: PREDICTOR
-# ==========================================
 with tab1:
     st.info("Enter specifications below to estimate the market value in Euros (€).")
 
@@ -90,30 +83,21 @@ with tab1:
         st.success(f"### Predicted Price: €{prediction_real[0]:,.2f}")
         st.write("This estimate is based on the features selected and trained Random Forest / Gradient Boosting logic.")
 
-# ==========================================
-# TAB 2: ANALYSIS (IMAGE DISPLAY)
-# ==========================================
+
+# TAB 2: ANALYSIS 
 with tab2:
-    st.header("📊 Which features drive the price?")
+    st.header("Which features drive the price?")
     st.write("""
     This chart illustrates the importance of different laptop features as determined by our model. 
     It helps explain why certain configurations lead to higher price estimates.
     """)
     
-    # Update 'importance_chart.png' to your actual file name
     try:
         st.image("importance_chart.png", caption="Feature Importance Analysis", use_container_width=True)
     except:
-        st.warning("⚠️ Importance chart image not found. Please ensure 'importance_chart.png' is in the app folder.")
+        st.warning("Importance chart image not found.")
 
-    st.info("""
-    **Key Takeaway:** In most cases, **RAM** and **CPU** are the dominant drivers of laptop pricing, 
-    followed by display quality (Resolution) and Storage capacity.
-    """)
-
-# ==========================================
-# 3. STYLING
-# ==========================================
+# STYLING
 st.markdown(
     """
     <style>
