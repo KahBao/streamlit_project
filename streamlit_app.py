@@ -8,7 +8,7 @@ import joblib
 # ==========================================
 # Ensure your .pkl file is in the same folder as this script
 try:
-    model = joblib.load("laptop_best_rs_gb_model.pkl")
+    model = joblib.load("laptop_best_rf_gb_model.pkl")
 except Exception as e:
     st.error(f"Error loading model: {e}")
 
